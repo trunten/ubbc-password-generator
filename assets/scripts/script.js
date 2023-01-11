@@ -154,3 +154,40 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
+
+// Just a little test to see if i could generate my own character sets
+function charArrayFromAscii(asciiStart, asciiEnd, ignore) {
+  let arr = [];
+  let ignoreType = "default";
+  if (ignore && ignore.includes) {
+    ignoreType = "array"; // or string but includes works for both :)
+  } else if (ignore && ignore.test) {
+    ignoreType = "regex";
+  } 
+  for (let i = Math.max(0,asciiStart); i <= Math.min(128, asciiEnd); i++) {
+    char = String.fromCharCode(i);
+    switch (ignoreType) {
+      case "array":
+        if (!ignore.includes(char)) { arr.push(char); }
+      break
+
+      case "regex":
+        if (!ignore.test(char)) { arr.push(char); }
+      break
+
+      default:
+        arr.push(char);
+    }
+    
+  }
+  return arr;
+}
+
+const charsetTest = {
+  upperCase: charArrayFromAscii(65,90),
+  lowerCase: charArrayFromAscii(97,122), 
+  numbers: [..."0123456789"], // or charArrayFromAscii(48,57) - Just wanted to try something different for numbers
+  special: charArrayFromAscii(33,126,/[\d\w\s;(),<>=`]/),
+};
+
+console.log(charsetTest);
