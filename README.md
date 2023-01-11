@@ -6,7 +6,7 @@
 
 The following image shows the web application's appearance and functionality:
 
-![password generator demo](./assets/05-javascript-challenge-demo.png)
+![password generator demo](./assets/images/05-javascript-challenge-demo.png)
 
 
 * Generate a password when the button is clicked
