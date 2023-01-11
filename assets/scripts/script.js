@@ -132,8 +132,9 @@ function generatePassword() {
   return password.substring(0, options.length); //don't need a substring as it should be already at the required length. just for my sanity!
 }
 
-// Get references to the #generate element
+// Get references to the #generate & #copy elements
 var generateBtn = document.querySelector('#generate');
+var copyBtn = document.querySelector('#copy');
 
 // Write password to the #password input
 function writePassword() {
@@ -146,8 +147,14 @@ function writePassword() {
   }
 }
 
-// Add event listener to generate button
+// Copy password to clipboard
+function copyPassword() {
+
+}
+
+// Add event listener to generate and copy to clipboard buttons
 generateBtn.addEventListener('click', writePassword);
+copyBtn.addEventListener('click', copyPassword);
 
 // Just a little test to see if i could generate my own character sets
 function charArrayFromAscii(asciiStart, asciiEnd, ignore) {
