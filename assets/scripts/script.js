@@ -88,6 +88,13 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+const charsets = {
+  upperCase: upperCasedCharacters,
+  lowerCase: lowerCasedCharacters, 
+  numbers: numericCharacters, 
+  special: specialCharacters
+};
+
 // Function to prompt user for password options
 function getPasswordOptions() {
 
