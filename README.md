@@ -1,6 +1,6 @@
 # ubbc-password-generator
 
-[Deploeyd Application](https://trunten.github.io/ubbc-password-generator)
+[Deployed Application](https://trunten.github.io/ubbc-password-generator)
 
 ## Instructions
 
