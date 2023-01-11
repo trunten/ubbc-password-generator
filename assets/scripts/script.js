@@ -150,9 +150,10 @@ function writePassword() {
 
 // Copy password to clipboard
 function copyPassword() {
-  let s = document.querySelector('#password').innerText.trimEnd();
+  let s = document.querySelector('#password').value.trimEnd();
   if (s) {
     navigator.clipboard.writeText(s);
+    console.log("Copied to clipboard:", s);
   }
 }
 
