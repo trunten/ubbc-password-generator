@@ -149,7 +149,10 @@ function writePassword() {
 
 // Copy password to clipboard
 function copyPassword() {
-
+  let s = document.querySelector('#password').innerText.trimEnd();
+  if (s) {
+    navigator.clipboard.writeText(s);
+  }
 }
 
 // Add event listener to generate and copy to clipboard buttons
