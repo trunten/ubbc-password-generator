@@ -145,8 +145,11 @@ var generateBtn = document.querySelector('#generate');
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  var passwordText = document.querySelector('#password');
-  passwordText.value = password;
+  //don't need to do this bit if password is an empty string
+  if (password) {
+    var passwordText = document.querySelector('#password');
+    passwordText.value = password;
+  }
 }
 
 // Add event listener to generate button
