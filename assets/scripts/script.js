@@ -97,7 +97,25 @@ const charsets = {
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-
+  const debug =  {
+    length: 44,
+    hasUpperCase: true,
+    hasLowerCase: true,
+    hasNumbers: true,
+    hasSpecial: true,
+  };
+  const options = {};
+  let length = prompt("How long? (At least 10, no more than 64");
+  if (!length) { console.log("user cancelled"); return };
+  length = parseInt(length);
+  if (!length || length < 10 || length > 64) { console.log("invalid inout or wrong length"); return };
+  if (confirm("Lower case?")) options.hasLowerCase = true;
+  if (confirm("Upper case?")) options.hasUpperCase = true;
+  if (confirm("Numbers?")) options.hasNumbers = true;
+  if (confirm("Special characters?")) options.hasSpecial = true;
+  if (Object.keys(options).length === 0) { console.log("no options"); return }
+  options.length = length;
+  return options;
 }
 
 // Function for getting a random element from an array
