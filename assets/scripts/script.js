@@ -141,7 +141,7 @@ function writePassword() {
   //don't need to do this bit if password is an empty string
   if (password) {
     var passwordText = document.querySelector('#password');
-    passwordText.value = password;
+    passwordText.value = password.match(/.{4}/g).join(" - ");
   }
 }
 
