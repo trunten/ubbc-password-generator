@@ -125,7 +125,18 @@ function getRandom(arr) {
 
 // Function to generate password with user input
 function generatePassword() {
-
+  const options = getPasswordOptions();
+  if (!options) { return ""; }
+  let password = "";
+  if (options.length >= 10 && options.length <= 64) { // don't need to check this really, just a bit of defensive programminf
+    while(password.length < options.length) {
+      if (password.length < options.length && options.hasUpperCase) { password += getRandom(charsets.upperCase); }
+      if (password.length < options.length && options.hasLowerCase) { password += getRandom(charsets.lowerCase); }
+      if (password.length < options.length && options.hasNumbers) { password += getRandom(charsets.numbers); }
+      if (password.length < options.length && options.hasSpecial) { password += getRandom(charsets.special); }
+    }
+  }
+  return password.substring(0, options.length); //don't need a substring as it should be already at the required length. just for my sanity!
 }
 
 // Get references to the #generate element
@@ -135,7 +146,6 @@ var generateBtn = document.querySelector('#generate');
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector('#password');
-
   passwordText.value = password;
 }
 
