@@ -97,13 +97,6 @@ const charsets = {
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-  const debug =  {
-    length: 44,
-    hasUpperCase: true,
-    hasLowerCase: true,
-    hasNumbers: true,
-    hasSpecial: true,
-  };
   const options = {};
   let length = prompt("How long? (At least 10, no more than 64");
   if (!length) { console.log("user cancelled"); return };
