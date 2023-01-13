@@ -107,8 +107,11 @@ function getPasswordOptions() {
   // Object to hold all the user option choices for their password
   let options = {};
 
+  // If the user-interface password option fields are visible then use those instead of displaying prompts
+  // Just so I can fullfill the technical criteria as well as having a nice little bonus.
   if (!document.querySelector(".options").className.includes("hide")) {
     options = validateOptions();
+    // if an options object was not returned then return that, otherwise, cancel operation.
     if (options) {
       return options;
     } else {
@@ -232,7 +235,7 @@ function copyPassword() {
 generateBtn.addEventListener('click', writePassword);
 copyBtn.addEventListener('click', copyPassword);
 
-// User option fields
+// User interface option fields
 document.getElementById("show-options").addEventListener("click", (e) => {
   e.preventDefault();
   const optSelect = document.querySelector(".options");
@@ -240,6 +243,8 @@ document.getElementById("show-options").addEventListener("click", (e) => {
     optSelect.classList.remove("hide");
     document.getElementById("show-options").classList.add("hide");
   } else {
+    // Disallow hiding again for now as it became too combersome to decide whether 
+    // or not to show prompts based on visibility if options were already selected.
     // optSelect.classList.add("hide");
   }
 });
@@ -252,27 +257,33 @@ function validateOptions() {
   tooltip.classList.remove("top");
   tooltip.classList.remove("bottom");
   if (!length) {
+    // If no length has been entered alert the user and cancel operation.
     tooltip.textContent = "Length is required";
     tooltip.classList.add("top");
     return false;
   } else if (length < MIN_LENGTH || length > MAX_LENGTH) {
+    // If an invlaid length has been entered alert the user and cancel operation.
     tooltip.textContent = "Invalid length";
     tooltip.classList.add("top");
     return false;
   } else {
     let anySelected = false
+    // Store password options if selected
     for (el of checkboxes) {
       if (el.checked) { 
         anySelected = true 
         options[el.id] = el.checked;
       };
     }
+    // If no options have been selected, alert the user and cancel operation.
     if (!anySelected) {
       tooltip.textContent = "Select at least one option";
       tooltip.classList.add("bottom");
       return false;
     }
   }
+
+  // If we get here all input has passed validation so add length to the options object and return it
   options.length = length;
   return options;
 }
