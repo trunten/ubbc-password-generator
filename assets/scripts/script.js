@@ -100,7 +100,7 @@ const charsets = {
 // These are used twice in my code so it is is sensible to define them here so if
 // any changes are made to these in the future only a single change has to be made.
 const MIN_LENGTH = 10;
-const MAX_LENGTH = 10;
+const MAX_LENGTH = 64;
 
 // Function to prompt user for password options
 function getPasswordOptions() {
@@ -120,6 +120,7 @@ function getPasswordOptions() {
     console.log("invalid input or wrong length"); 
     return;
   } else if (length < MIN_LENGTH || length > MAX_LENGTH) {
+    console.log(length, MIN_LENGTH, MAX_LENGTH);
     // If the length falls outside the expected range alert the user and cancel operation.
     alert("Password length must be between 10 and 64 (inclusive). Try again.");
     console.log("invalid length input"); 
@@ -199,7 +200,8 @@ function writePassword() {
   }
 }
 
-// Copy password to clipboard
+
+// Function to copy the password to clipboard
 function copyPassword() {
   // Get the current value from the password element on the page
   let s = document.querySelector('#password').value.trimEnd();
@@ -213,6 +215,7 @@ function copyPassword() {
 // Add event listener to generate and copy to clipboard buttons
 generateBtn.addEventListener('click', writePassword);
 copyBtn.addEventListener('click', copyPassword);
+
 
 // =====================================================================================
 // Just a little test to see if i could generate my own character sets programmatically
