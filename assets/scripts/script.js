@@ -105,7 +105,16 @@ const MAX_LENGTH = 64;
 // Function to prompt user for password options
 function getPasswordOptions() {
   // Object to hold all the user option choices for their password
-  const options = {};
+  let options = {};
+
+  if (!document.querySelector(".options").className.includes("hide")) {
+    options = validateOptions();
+    if (options) {
+      return options;
+    } else {
+      return;
+    }
+  }
 
   // First prompt the user for a password length
   let length = prompt("How long do you want you password to be? (At least 10 characters and no more than 64");
@@ -179,7 +188,7 @@ function generatePassword() {
   return password.substring(0, options.length); //don't need a substring as it should be already at the required length. just for my sanity!
 }
 
-// Get references to the #generate & #copy elements
+// Get references to the #generate and #copy  elements
 var generateBtn = document.querySelector('#generate');
 var copyBtn = document.querySelector('#copy');
 
@@ -222,6 +231,50 @@ function copyPassword() {
 // Add event listener to generate and copy to clipboard buttons
 generateBtn.addEventListener('click', writePassword);
 copyBtn.addEventListener('click', copyPassword);
+
+// User option fields
+document.getElementById("show-options").addEventListener("click", (e) => {
+  e.preventDefault();
+  const optSelect = document.querySelector(".options");
+  if (optSelect.className.includes("hide")) {
+    optSelect.classList.remove("hide");
+  } else {
+    // optSelect.classList.add("hide");
+  }
+});
+
+function validateOptions() {
+  const options = {};
+  const length = parseInt(document.getElementById("length").value);
+  const checkboxes = document.querySelectorAll(".checkbox input");
+  const tooltip = document.getElementById("tooltip");
+  tooltip.classList.remove("top");
+  tooltip.classList.remove("bottom");
+  if (!length) {
+    tooltip.textContent = "Length is required";
+    tooltip.classList.add("top");
+    return false;
+  } else if (length < MIN_LENGTH || length > MAX_LENGTH) {
+    tooltip.textContent = "Invalid length";
+    tooltip.classList.add("top");
+    return false;
+  } else {
+    let anySelected = false
+    for (el of checkboxes) {
+      if (el.checked) { 
+        anySelected = true 
+        options[el.id] = el.checked;
+      };
+    }
+    if (!anySelected) {
+      tooltip.textContent = "Select at least one option";
+      tooltip.classList.add("bottom");
+      return false;
+    }
+  }
+  options.length = length;
+  return options;
+}
 
 
 // =====================================================================================

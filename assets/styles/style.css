@@ -175,9 +175,7 @@ h3 {
   border-radius: 10px;
   width: fit-content;
   position: absolute;
-  left: 50%;
-  margin-left: -17.5px;
-  height: 35px;
+  min-height: 35px;
   text-align: center;
   display: none;
 }
@@ -192,6 +190,9 @@ h3 {
 }
 
 #tooltip.top {
+  width: 144px;
+  margin-left: -72px;
+  left: 50%;
   top: -10px;
   display: block;
 }
@@ -202,7 +203,7 @@ h3 {
 }
 
 #tooltip.bottom {
-  bottom: -40px;
+  bottom: -45px;
   display: block;
 }
 
