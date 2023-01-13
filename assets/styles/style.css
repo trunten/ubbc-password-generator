@@ -122,6 +122,58 @@ button[disabled] {
   display: none;
 }
 
+h3 {
+  margin: 10px 0;
+}
+
+/* Stlying for options toggle */
+#show-options {
+  display: block;
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: rgb(0, 60, 255); 
+  text-align: right;
+  margin-top: -25px;
+  margin-bottom: 5px;
+}
+
+#show-options:hover {
+  color: rgb(0, 174, 255);
+}
+
+/* Styling for form input (password length) */
+.text-input input {
+  min-width: 20%;
+  padding: 5px;
+  font-size: 18px;
+  margin: 5px 0;
+  border: 1px solid #333;
+}
+
+input:placeholder-shown {
+  border: 1px solid #333 !important;
+  background-color: transparent !important;
+}
+
+input:invalid {
+  border: 1px solid rgb(250, 76, 76);;
+  background-color: rgba(255, 147, 147, 0.164);
+}
+
+/* Styling for checkboxes */
+.checkboxes {
+  margin: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-between;
+}
+
+.checkbox {
+  flex: 1 1 150px;
+  white-space: nowrap;
+}
+
 /* Stlying for popup dialog */
 #popup {
   visibility: hidden;

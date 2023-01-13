@@ -108,7 +108,7 @@ function getPasswordOptions() {
   const options = {};
 
   // First prompt the user for a password length
-  let length = prompt("How long shoud do you want you password to be? (At least 10 characters and no more than 64");
+  let length = prompt("How long do you want you password to be? (At least 10 characters and no more than 64");
   if (!length) { return; }
 
   // Convert supplied  user value into an integer
@@ -208,7 +208,7 @@ function copyPassword() {
   if (s) {
     navigator.clipboard.writeText(s);
 
-    // If a timeout already exists clear this first so the popup isnt dismissed prematurely.
+    // If a timeout already exists clear this first so the popup isn't dismissed prematurely.
     if (timeout) { clearTimeout(timeout); }
 
     // Show the popup
