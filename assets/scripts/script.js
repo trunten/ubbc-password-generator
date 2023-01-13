@@ -109,7 +109,7 @@ function getPasswordOptions() {
 
   // First prompt the user for a password length
   let length = prompt("How long shoud do you want you password to be? (At least 10 characters and no more than 64");
-  if (!length) { console.log("user cancelled"); return; }
+  if (!length) { return; }
 
   // Convert supplied  user value into an integer
   length = parseInt(length);
@@ -117,13 +117,10 @@ function getPasswordOptions() {
   if (!length) { 
     // If parseInt fails then the user input an invalid string. Alert the user and cancel operation.
     alert("Please input a valid number. Try again.");
-    console.log("invalid input or wrong length"); 
     return;
   } else if (length < MIN_LENGTH || length > MAX_LENGTH) {
-    console.log(length, MIN_LENGTH, MAX_LENGTH);
     // If the length falls outside the expected range alert the user and cancel operation.
     alert("Password length must be between 10 and 64 (inclusive). Try again.");
-    console.log("invalid length input"); 
     return;
   }
 
@@ -138,7 +135,6 @@ function getPasswordOptions() {
   // Alert the user and cancel the operation.
   if (Object.keys(options).length === 0) { 
     alert("You must pick at least one option. Try again")
-    console.log("no options"); 
     return ;
   }
 
@@ -211,7 +207,6 @@ function copyPassword() {
   // If the variable 's' is a none empty string then copy this to the clipboard and inform the user
   if (s) {
     navigator.clipboard.writeText(s);
-    console.log("Copied to clipboard:", s);
 
     // If a timeout already exists clear this first so the popup isnt dismissed prematurely.
     if (timeout) { clearTimeout(timeout); }
