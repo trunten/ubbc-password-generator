@@ -240,11 +240,11 @@ function charArrayFromAscii(asciiStart, asciiEnd, ignore) {
     switch (ignoreType) {
       case "array":
         if (!ignore.includes(char)) { arr.push(char); }
-      break
+        break;
 
       case "regex":
         if (!ignore.test(char)) { arr.push(char); }
-      break
+        break;
 
       default:
         arr.push(char);
