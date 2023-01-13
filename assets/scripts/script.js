@@ -200,6 +200,9 @@ function writePassword() {
   }
 }
 
+// Variable to store timeout of the popup and a reference to the #popup element.
+const popup = document.getElementById("popup");
+let timeout;
 
 // Function to copy the password to clipboard
 function copyPassword() {
@@ -209,6 +212,15 @@ function copyPassword() {
   if (s) {
     navigator.clipboard.writeText(s);
     console.log("Copied to clipboard:", s);
+
+    // If a timeout already exists clear this first so the popup isnt dismissed prematurely.
+    if (timeout) { clearTimeout(timeout); }
+
+    // Show the popup
+    popup.classList.add("show");
+
+    //hide the popup after 1.5 seconds
+    timeout = setTimeout(function(){ popup.classList.remove("show"); timeout = false;}, 1500);
   }
 }
 
