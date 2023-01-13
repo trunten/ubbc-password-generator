@@ -143,7 +143,7 @@ function getPasswordOptions() {
   if (confirm("Do you want numbers?")) options.hasNumbers = true;
   if (confirm("Do you want special characters?")) options.hasSpecial = true;
 
-  // If my options object has no keys at this point then the user has not selected to include and character sets. 
+  // If my options object has no keys at this point then the user has not selected to include any character sets. 
   // Alert the user and cancel the operation.
   if (Object.keys(options).length === 0) { 
     alert("You must pick at least one option. Try again")
@@ -314,7 +314,6 @@ function charArrayFromAscii(asciiStart, asciiEnd, ignore) {
       default:
         arr.push(char);
     }
-    
   }
   return arr;
 }
