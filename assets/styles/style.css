@@ -120,6 +120,7 @@ button[disabled] {
 
 .hide {
   display: none;
+  visibility: hidden;
 }
 
 h3 {
@@ -151,12 +152,10 @@ h3 {
 }
 
 .text-input input:placeholder-shown {
-  border: 1px solid #333 !important;
   background-color: transparent !important;
 }
 
 .text-input input:invalid {
-  border: 1px solid rgb(250, 76, 76);;
   background-color: rgba(255, 147, 147, 0.164);
 }
 

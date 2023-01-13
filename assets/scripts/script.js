@@ -238,6 +238,7 @@ document.getElementById("show-options").addEventListener("click", (e) => {
   const optSelect = document.querySelector(".options");
   if (optSelect.className.includes("hide")) {
     optSelect.classList.remove("hide");
+    document.getElementById("show-options").classList.add("hide");
   } else {
     // optSelect.classList.add("hide");
   }
