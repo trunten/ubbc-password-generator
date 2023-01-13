@@ -88,6 +88,7 @@ const upperCasedCharacters = [
   'Z'
 ];
 
+// Create an object to hold all my character sets for additional clarity.
 const charsets = {
   upperCase: upperCasedCharacters,
   lowerCase: lowerCasedCharacters, 
@@ -95,40 +96,89 @@ const charsets = {
   special: specialCharacters
 };
 
+// Constants to hold the allowable minimum and maximum lengths for the password.
+// These are used twice in my code so it is is sensible to define them here so if
+// any changes are made to these in the future only a single change has to be made.
+const MIN_LENGTH = 10;
+const MAX_LENGTH = 10;
+
 // Function to prompt user for password options
 function getPasswordOptions() {
+  // Object to hold all the user option choices for their password
   const options = {};
-  let length = prompt("How long? (At least 10, no more than 64");
-  if (!length) { console.log("user cancelled"); return };
+
+  // First prompt the user for a password length
+  let length = prompt("How long shoud do you want you password to be? (At least 10 characters and no more than 64");
+  if (!length) { console.log("user cancelled"); return; }
+
+  // Convert supplied  user value into an integer
   length = parseInt(length);
-  if (!length || length < 10 || length > 64) { console.log("invalid inout or wrong length"); return };
-  if (confirm("Lower case?")) options.hasLowerCase = true;
-  if (confirm("Upper case?")) options.hasUpperCase = true;
-  if (confirm("Numbers?")) options.hasNumbers = true;
-  if (confirm("Special characters?")) options.hasSpecial = true;
-  if (Object.keys(options).length === 0) { console.log("no options"); return }
+  
+  if (!length) { 
+    // If parseInt fails then the user input an invalid string. Alert the user and cancel operation.
+    alert("Please input a valid number. Try again.");
+    console.log("invalid input or wrong length"); 
+    return;
+  } else if (length < MIN_LENGTH || length > MAX_LENGTH) {
+    // If the length falls outside the expected range alert the user and cancel operation.
+    alert("Password length must be between 10 and 64 (inclusive). Try again.");
+    console.log("invalid length input"); 
+    return;
+  }
+
+  // Prompt user to pick at least one of the four options and add any confirmed choices to my options object
+  alert("Please pick at least one of the following options");
+  if (confirm("Do you want lower case characters?")) options.hasLowerCase = true;
+  if (confirm("Do you want upper case characters?")) options.hasUpperCase = true;
+  if (confirm("Do you want numbers?")) options.hasNumbers = true;
+  if (confirm("Do you want special characters?")) options.hasSpecial = true;
+
+  // If my options object has no keys at this point then the user has not selected to include and character sets. 
+  // Alert the user and cancel the operation.
+  if (Object.keys(options).length === 0) { 
+    alert("You must pick at least one option. Try again")
+    console.log("no options"); 
+    return ;
+  }
+
+  // If we get here all checks have passed and we can generate the password so add the length (from user input)
+  // to the options object and return the object for it to be used in the generation phase. 
   options.length = length;
   return options;
 }
 
-// Function for getting a random element from an array
+// Function for getting a random element from an array supplied as a paramater
 function getRandom(arr) {
+  if (!arr) { return; } //If nothing was supplied as a paramater exit immediately
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
 // Function to generate password with user input
 function generatePassword() {
+  // Get user options (function returns an object)
   const options = getPasswordOptions();
+
+  // If getPasswordOptions didn't return an object then either the user cancelled or validation failed.
+  // Set the return value to an empty string and exit immediately.
   if (!options) { return ""; }
   let password = "";
-  if (options.length >= 10 && options.length <= 64) { // don't need to check this really, just a bit of defensive programminf
+
+  // Don't need to check this really, just a bit of defensive programming to ensure that the user chose a valid password length
+  if (options.length >= MIN_LENGTH && options.length <= MAX_LENGTH) { 
+    // While the length of the variable 'password' is less that the require length keep looping.
     while(password.length < options.length) {
-      if (password.length < options.length && options.hasUpperCase) { password += getRandom(charsets.upperCase); }
+      // Check the options object to check if each of upper case, lower case, numbers & special characters need to be included
+      // in the final output. If they are and the length of the password is still less than the required lenght then add a random
+      // character from the relevant array to the 'password' variable. NB: if the options object does not contain the property
+      // it returns falsy so we can check chracter inclusion using options.hasNumbers (for example).
+      if (options.length && options.hasUpperCase) { password += getRandom(charsets.upperCase); } //Don't need to check length in this one as it was checked in the while condition
       if (password.length < options.length && options.hasLowerCase) { password += getRandom(charsets.lowerCase); }
       if (password.length < options.length && options.hasNumbers) { password += getRandom(charsets.numbers); }
       if (password.length < options.length && options.hasSpecial) { password += getRandom(charsets.special); }
     }
   }
+
+  //Return the password variable so that it can be output to the page
   return password.substring(0, options.length); //don't need a substring as it should be already at the required length. just for my sanity!
 }
 
@@ -139,7 +189,8 @@ var copyBtn = document.querySelector('#copy');
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  //don't need to do this bit if password is an empty string
+  // If password is an empty string then either the user cancelled or validtion failed. Only proceed to outputting
+  // the password to the page if it is a none empty string.
   if (password) {
     var passwordText = document.querySelector('#password');
     // passwordText.value = password.match(/.{4}/g).join(" - "); // Just testing password chunking to see if it looks better output like this
@@ -150,7 +201,9 @@ function writePassword() {
 
 // Copy password to clipboard
 function copyPassword() {
+  // Get the current value from the password element on the page
   let s = document.querySelector('#password').value.trimEnd();
+  // If the variable 's' is a none empty string then copy this to the clipboard and inform the user
   if (s) {
     navigator.clipboard.writeText(s);
     console.log("Copied to clipboard:", s);
@@ -161,7 +214,9 @@ function copyPassword() {
 generateBtn.addEventListener('click', writePassword);
 copyBtn.addEventListener('click', copyPassword);
 
-// Just a little test to see if i could generate my own character sets
+// =====================================================================================
+// Just a little test to see if i could generate my own character sets programmatically
+// =====================================================================================
 function charArrayFromAscii(asciiStart, asciiEnd, ignore) {
   let arr = [];
   let ignoreType = "default";
@@ -196,4 +251,4 @@ const charsetTest = {
   special: charArrayFromAscii(33,126,/[\d\w\s;(),<>=`]/),
 };
 
-// console.log(charsetTest);
+console.log(charsetTest);
