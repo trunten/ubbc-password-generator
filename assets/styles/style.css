@@ -150,14 +150,65 @@ h3 {
   border: 1px solid #333;
 }
 
-input:placeholder-shown {
+.text-input input:placeholder-shown {
   border: 1px solid #333 !important;
   background-color: transparent !important;
 }
 
-input:invalid {
+.text-input input:invalid {
   border: 1px solid rgb(250, 76, 76);;
   background-color: rgba(255, 147, 147, 0.164);
+}
+
+/* Tooltip styling */
+.options {
+  position: relative;
+}
+
+#tooltip {
+  --bg: rgba(0, 0, 0, 0.733);
+  padding: 10px 20px;
+  background-color: var(--bg);
+  color: white;
+  font-size: 0.8rem;
+  text-align: center;
+  border-radius: 10px;
+  width: fit-content;
+  position: absolute;
+  left: 50%;
+  margin-left: -17.5px;
+  height: 35px;
+  text-align: center;
+  display: none;
+}
+
+#tooltip::after {
+  content: " ";
+  position: absolute;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+}
+
+#tooltip.top {
+  top: -10px;
+  display: block;
+}
+
+#tooltip.top::after {
+  top: 100%; 
+  border-color: var(--bg) transparent transparent transparent;
+}
+
+#tooltip.bottom {
+  bottom: -40px;
+  display: block;
+}
+
+#tooltip.bottom::after {
+  bottom: 100%; 
+  border-color: transparent transparent var(--bg);
 }
 
 /* Styling for checkboxes */
