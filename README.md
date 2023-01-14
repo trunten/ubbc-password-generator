@@ -23,3 +23,4 @@ The following image shows the web application's appearance and functionality:
 
   ## Credits
   Tooltip styling: https://www.w3schools.com/css/css_tooltip.asp
+  Pulse effect: https://codepen.io/FlorinPop17/pen/drJJzK
