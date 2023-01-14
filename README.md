@@ -20,3 +20,6 @@ The following image shows the web application's appearance and functionality:
       * Special characters ($@%&*, etc)
   * Code should validate for each input and at least one character type should be selected
   * Once prompts are answered then the password should be generated and displayed in an alert or written to the page
+
+  ## Credits
+  Tooltip styling: https://www.w3schools.com/css/css_tooltip.asp
