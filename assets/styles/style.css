@@ -147,7 +147,8 @@ h3 {
 
 /* Styling for form input (password length) */
 .text-input input {
-  min-width: 20%;
+  min-width: 100px;
+  width: 20%;
   padding: 5px;
   font-size: 18px;
   margin: 5px 0;

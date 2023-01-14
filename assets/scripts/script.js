@@ -204,9 +204,11 @@ function writePassword() {
     var passwordText = document.querySelector('#password');
     // passwordText.value = password.match(/.{4}/g).join(" - "); // Just testing password chunking to see if it looks better output like this
     passwordText.value = password;
+    // Enalble copy button now there's something to copy
     copyBtn.disabled = false;
+    //"Pulse" the text area
     document.querySelector("textarea").classList.remove("pulse");
-    setTimeout(() =>{ document.querySelector("textarea").classList.add("pulse"); },0)
+    setTimeout(() => { document.querySelector("textarea").classList.add("pulse"); },0)
   }
 }
 
@@ -253,7 +255,8 @@ document.getElementById("show-options").addEventListener("click", (e) => {
 
 function validateOptions() {
   const options = {};
-  const length = parseInt(document.getElementById("length").value);
+  const input = document.getElementById("length");
+  const length = parseInt(input.value);
   const checkboxes = document.querySelectorAll(".checkbox input");
   const tooltip = document.getElementById("tooltip");
   tooltip.classList.remove("top");
@@ -269,6 +272,7 @@ function validateOptions() {
     tooltip.classList.add("top");
     return false;
   } else {
+    if (input.value != length) { input.value = length };
     let anySelected = false
     // Store password options if selected
     for (el of checkboxes) {
