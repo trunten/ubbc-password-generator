@@ -32,6 +32,7 @@ N/A
 - [Deployed Application](https://trunten.github.io/ubbc-password-generator/)
 - JavaScript is required for the site to function (make sure it is enabled).
     - noscript tag included to alert the user that JavaScript is required.
+- Generated password can be copied to the clipboard by clicking the "Copy to Clipboard" button.
 - A more user friendly interface is presented to the user when they click on "Show Options" just for a little fun.
 - Preview of the output:
 
