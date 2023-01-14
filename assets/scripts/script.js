@@ -253,6 +253,17 @@ document.getElementById("show-options").addEventListener("click", (e) => {
   }
 });
 
+// Event listeners for length input & checkboxes to clear tooltip if it's showing
+for (let el of document.querySelectorAll("input[type='checkbox'")) {
+  console.log(el);
+  el.addEventListener("click", (e) => {
+    document.getElementById("tooltip").classList.remove("bottom");
+  });
+}
+document.getElementById("length").addEventListener("click", (e) => {
+  document.getElementById("tooltip").classList.remove("top");
+});
+
 function validateOptions() {
   const options = {};
   const input = document.getElementById("length");

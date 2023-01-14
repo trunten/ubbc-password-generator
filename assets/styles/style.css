@@ -254,6 +254,7 @@ h3 {
   transition: all 0.7s ease-in-out;
 }
 
+/* Pulse animation */
 .pulse {animation: pulse 2s ;}
 
 /* https://codepen.io/FlorinPop17/pen/drJJzK */
