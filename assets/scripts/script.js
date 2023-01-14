@@ -204,7 +204,8 @@ function writePassword() {
     var passwordText = document.querySelector('#password');
     // passwordText.value = password.match(/.{4}/g).join(" - "); // Just testing password chunking to see if it looks better output like this
     passwordText.value = password;
-    copyBtn.classList.remove("hide");
+    copyBtn.disabled = false;
+    // copyBtn.classList.remove("hide");
   }
 }
 
