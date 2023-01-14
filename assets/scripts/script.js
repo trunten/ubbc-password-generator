@@ -258,7 +258,6 @@ document.getElementById("show-options").addEventListener("click", (e) => {
 
 // Event listeners for length input & checkboxes to clear tooltip if it's showing
 for (let el of document.querySelectorAll("input[type='checkbox'")) {
-  console.log(el);
   el.addEventListener("click", (e) => {
     document.getElementById("tooltip").classList.remove("bottom");
   });
@@ -340,4 +339,5 @@ const charsetTest = {
   special: charArrayFromAscii(33,126,/[\d\w\s;(),<>=`]/),
 };
 
-console.log(charsetTest);
+// Output my character sets to the console. It worked!
+// console.log(charsetTest);
