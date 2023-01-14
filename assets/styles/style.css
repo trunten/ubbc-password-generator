@@ -238,14 +238,14 @@ h3 {
   position: fixed; 
   z-index: 1; 
   left: 50%; 
-  bottom: 30px;
+  top: 50px;
   opacity: 0;
   transition: all 0.5s ease-in-out;
 }
 
 #popup.show {
   visibility: visible;
-  opacity: 0.8;
+  opacity: 0.85;
   transition: all 0.7s ease-in-out;
 }
 
