@@ -261,14 +261,9 @@ function validateOptions() {
   const tooltip = document.getElementById("tooltip");
   tooltip.classList.remove("top");
   tooltip.classList.remove("bottom");
-  if (!length) {
-    // If no length has been entered alert the user and cancel operation.
-    tooltip.textContent = "Length is required";
-    tooltip.classList.add("top");
-    return false;
-  } else if (length < MIN_LENGTH || length > MAX_LENGTH) {
+  if (!length || length < MIN_LENGTH || length > MAX_LENGTH) {
     // If an invlaid length has been entered alert the user and cancel operation.
-    tooltip.textContent = "Invalid length";
+    tooltip.textContent = "Valid length required";
     tooltip.classList.add("top");
     return false;
   } else {

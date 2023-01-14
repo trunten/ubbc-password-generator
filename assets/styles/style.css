@@ -194,9 +194,9 @@ h3 {
 }
 
 #tooltip.top {
-  width: 154px;
-  margin-left: -77px;
-  left: 50%;
+  width: 164px;
+  /* margin-left: -77px; */
+  /* left: 50%; */
   top: -10px;
   display: block;
 }
