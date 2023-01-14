@@ -19,6 +19,8 @@
   <body>
     <div class="wrapper">
       <header>
+        <!-- Tag to alert the user that JavaScript is required if it is not enabled  -->
+        <noscript style="color:red;">JavaScript is required to enable functionailty. Make sure you enable it in your browser settings.</noscript>
         <h1>Password Generator</h1>
       </header>
       <div class="card">
@@ -62,7 +64,7 @@
           <div id="popup">Copied to clipboard</div>
         </div>
         <div class="card-footer">
-          <button id="generate" class="btn">Generate Password</button>
+          <button id="generate" class="btn" disabled>Generate Password</button>
           <button id="copy" class="btn" disabled>Copy to Clipboard</button>
         </div>
       </div>

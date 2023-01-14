@@ -195,6 +195,9 @@ function generatePassword() {
 var generateBtn = document.querySelector('#generate');
 var copyBtn = document.querySelector('#copy');
 
+// Enable generate button. Disabled by default in case javascript is not enabled
+generateBtn.disabled = false;
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
