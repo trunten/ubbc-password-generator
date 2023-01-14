@@ -25,6 +25,9 @@ Video of deployed application
 
 https://user-images.githubusercontent.com/4108334/212494939-cc9a03c8-7e16-4c57-aa17-7f9e9d3c732d.mp4
 
+Video of deployed application with expanded options
+
+https://user-images.githubusercontent.com/4108334/212495030-b1bc9860-dcc7-4790-ae64-0ecbfeb965f1.mp4
 
 ## Credits
 - Tooltip styling: https://www.w3schools.com/css/css_tooltip.asp
