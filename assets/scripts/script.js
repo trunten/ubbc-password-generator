@@ -167,6 +167,19 @@ function generatePassword() {
   // Get user options (function returns an object)
   const options = getPasswordOptions();
 
+  // =====================
+  //  Solution Note
+  // =====================
+  //
+  // For my solution I chose to iteratively pick a random character for each required array in turn as opposed to lumping all
+  // the required characters into a single array as suggested in class. This is because if I chose the latter solution it would 
+  // not guarantee that I would output a password that contained all of the required character types due to the nature of 
+  // random numbers. I have a created a CodePen to illustrate the problem I am trying to describe:
+  // https://codepen.io/trunten/pen/gOjxRrQ
+  //
+  // =====================
+  // =====================
+  //
   // If getPasswordOptions didn't return an object then either the user cancelled or validation failed.
   // Set the return value to an empty string and exit immediately.
   if (!options) { return ""; }
@@ -187,6 +200,12 @@ function generatePassword() {
     }
   }
 
+  // Shuffle password so it doesn't look so regular in terms of character type placement. Only need to do it
+  // if more than one class of characters are selected as it will be random enough already in that case.
+  if (Object.keys(options).length > 2) {
+    password = [...password].map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value).join("");
+  }
+
   //Return the password variable so that it can be output to the page
   return password.substring(0, options.length); //don't need a substring as it should be already at the required length. just for my sanity!
 }
@@ -205,7 +224,7 @@ function writePassword() {
   // the password to the page if it is a none empty string.
   if (password) {
     var passwordText = document.querySelector('#password');
-    // passwordText.value = password.match(/.{4}/g).join(" - "); // Just testing password chunking to see if it looks better output like this
+    // Output password
     passwordText.value = password;
     // Enalble copy button now there's something to copy
     copyBtn.disabled = false;
