@@ -69,10 +69,10 @@ function getPasswordOptions() {
 
   // Prompt user to pick at least one of the four options and add any confirmed choices to my options object
   alert("Please pick at least one of the following options");
-  if (confirm("Do you want lower case characters?")) options.hasLowerCase = true;
-  if (confirm("Do you want upper case characters?")) options.hasUpperCase = true;
-  if (confirm("Do you want numbers?")) options.hasNumbers = true;
-  if (confirm("Do you want special characters?")) options.hasSpecial = true;
+  if (confirm("Do you want lower case characters?")) { options.hasLowerCase = true; }
+  if (confirm("Do you want upper case characters?")) { options.hasUpperCase = true; }
+  if (confirm("Do you want numbers?")) { options.hasNumbers = true; }
+  if (confirm("Do you want special characters?")) { options.hasSpecial = true; }
 
   // If my options object has no keys at this point then the user has not selected to include any character sets. 
   // Alert the user and cancel the operation.
